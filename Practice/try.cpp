@@ -1,0 +1,46 @@
+#include <iostream>
+#include <vector>
+#include <bits/stdc++.h>
+using namespace std;
+
+void swap(int &a, int &b)
+{
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+void moveZero(vector<int> &nums)
+{
+    int n = nums.size();
+    int j = -1;
+    for (int i = 0; i < n; i++)
+    {
+        if (nums[i] == 0)
+        {
+            j = i;
+            break;
+        }
+    }
+    if (j == -1)
+        return;
+    for (int i = j + 1; i < n; i++)
+    {
+        if (nums[i] != 0)
+        {
+            swap(nums[i], nums[j]);
+            j++;
+        }
+    }
+}
+
+int main()
+{
+    vector<int> arr = {0, 1, 4, 0, 5, 2};
+    moveZero(arr);
+    for (int i : arr)
+    {
+        cout << i << " ";
+    }
+    return 0;
+}
