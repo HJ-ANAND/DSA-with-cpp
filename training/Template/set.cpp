@@ -23,6 +23,7 @@ int main()
     cout << endl;
 
     auto n = s.end();
+    --n;
     cout << *n << endl;
     return 0;
 }

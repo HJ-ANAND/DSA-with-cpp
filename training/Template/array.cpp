@@ -42,7 +42,6 @@ int main()
     // cout << arr.at(2) << endl;
     // cout << arr.data() << endl;
     // address of 1st element
-    // cout << arr.count() <<endl;
     sort(arr.begin(), arr.end());
 
     cout << "Sorted : ";
