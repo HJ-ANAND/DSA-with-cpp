@@ -6,13 +6,13 @@
 #include <iostream>
 using namespace std;
 
-class A
+class bank
 {
     int acc_no;
     int balance;
 
 public:
-    A(int accountno, int bal)
+    bank(int accountno, int bal)
     {
         acc_no = accountno;
         balance = bal;
@@ -55,7 +55,7 @@ public:
 
 int main()
 {
-    A obj(12345, 10000);
+    bank obj(12345, 10000);
     obj.checkBalance();
     obj.depositeMoney();
     obj.withdrawMoney();

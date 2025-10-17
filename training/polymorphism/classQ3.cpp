@@ -3,13 +3,9 @@ using namespace std;
 
 class Person
 {
-protected:
-    string name;
-
-protected:
-    int age;
-
 public:
+    string name;
+    int age;
     virtual void information()
     {
     }

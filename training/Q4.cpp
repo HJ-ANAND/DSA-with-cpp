@@ -5,10 +5,9 @@ using namespace std;
 
 class AreaOfCircle
 {
-    int rad;
 
 public:
-    int area(int r)
+    float area(int r)
     {
         float PI = 3.14;
 

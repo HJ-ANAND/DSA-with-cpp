@@ -23,7 +23,7 @@ public:
     void displayShape()
     {
         cout << "SHAPE IS CIRCLE." << endl;
-        cout << "Area is : " << endl;
+        cout << "Area is : " << area << endl;
     }
 };
 class Square : public Shape
