@@ -1,59 +1,55 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <array>
 #include <algorithm>
 using namespace std;
 
 vector<vector<string>> groupAnagrams(vector<string> strs)
 {
     vector<vector<string>> final;
-    // map<string, int> mpp;
-    // for(auto i : strs){
-    //     vector<string> str;
-    //     string tempstr = i;
+    // unordered_map<string, vector<string>> mpp;
+    // for (auto &s : strs)
+    // {
+    //     string tempstr = s;
     //     sort(tempstr.begin(), tempstr.end());
-    //     if(mpp.find(tempstr) != mpp.end()){
-    //         str.push_back(i);
-    //     }mpp[i]++;
+    //     mpp[tempstr].push_back(s);
     // }
+    // for (auto &x : mpp)
+    // {
+    //     final.push_back(move(x.second));
+    // }
+    // return final;
 
-    for (int i = 0; i < strs.size(); i++)
+    map<array<int, 26>, vector<string>> mpp;
+    for (auto &s : strs)
     {
-        bool found = false;
-        for (auto u : final)
+        array<int, 26> count{};
+        for (char c : s)
         {
-            for (auto k : u)
-            {
-                if (k == strs[i])
-                {
-                    found = true;
-                    break;
-                }
-            }
+            count[c - 'a']++;
         }
-        if (found)
-            continue;
-        vector<string> str = {strs[i]};
-        string tempstr = strs[i];
-        sort(tempstr.begin(), tempstr.end());
-        for (int j = i + 1; j < strs.size(); j++)
-        {
-            string tempstr2 = strs[j];
-            sort(tempstr2.begin(), tempstr2.end());
-            if (tempstr == tempstr2)
-            {
-                str.push_back(strs[j]);
-            }
-        }
-        final.push_back(str);
-        str = {};
+        mpp[count].emplace_back(s);
+    }
+    for (auto &x : mpp)
+    {
+        final.emplace_back(move(x.second));
     }
     return final;
 }
 
 int main()
 {
-    vector<string> strs = {"act", "pots", "tops", "cat", "stop", "hat"};
+    int n;
+    if (!(cin >> n))
+        return 0;
+    vector<string> strs(n);
+
+    for (int i = 0; i < n; ++i)
+    {
+        cin >> strs[i];
+    }
+
     vector<vector<string>> temp = groupAnagrams(strs);
     for (auto i : temp)
     {
