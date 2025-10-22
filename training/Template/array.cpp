@@ -80,6 +80,13 @@ int main()
     cout << "Max element is : " << *max << endl;
     cout << "Min element is : " << *min << endl;
 
+    cout << "Original : " << endl;
+    for (auto i : arr)
+    {
+        cout << i << " ";
+    }
+    cout << endl;
+
     auto z = remove(arr.begin(), arr.end(), 1);
     int n = distance(arr.begin(), z);
     for (int i = 0; i < n; i++)
@@ -87,13 +94,18 @@ int main()
         cout << arr[i] << " ";
     }
     cout << endl;
-
-    arr.swap(arr1);
-    for (int i : arr)
+    for (int i = 0; i < arr1.size(); i++)
     {
-        cout << i << " ";
+        cout << arr1[i] << " ";
     }
     cout << endl;
+
+    // arr.swap(arr1);
+    // for (int i : arr)
+    // {
+    //     cout << i << " ";
+    // }
+    // cout << endl;
 
     array<int, 5> newArr;
     newArr.fill(100);
