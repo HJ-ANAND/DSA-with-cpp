@@ -180,6 +180,85 @@ public:
         cout << "Node deleted from Position." << endl;
     }
 
+    void search(int item)
+    {
+        if (head == NULL)
+        {
+            cout << "List is empty. " << endl;
+            return;
+        }
+        Node *temp = head;
+        if (temp->data == item)
+        {
+            cout << "Item present at position 1." << endl;
+            return;
+        }
+        temp = temp->next;
+        int num = 2;
+        while (temp != head)
+        {
+            if (temp->data == item)
+            {
+                cout << "Item Present at position " << num << endl;
+                return;
+            }
+            num++;
+            temp = temp->next;
+        }
+
+        cout << "No record found. " << endl;
+    }
+
+    void count()
+    {
+        if (head == NULL)
+        {
+            cout << "List is empty." << endl;
+            return;
+        }
+        Node *temp = head;
+        int count = 1;
+        temp = temp->next;
+        while (temp != head)
+        {
+            count++;
+            temp = temp->next;
+        }
+        cout << "total no. of Elements are " << count << endl;
+    }
+
+    void update(int item, int pos)
+    {
+        if (head == NULL)
+        {
+            cout << "List is empty." << endl;
+            return;
+        }
+        if (pos == 1)
+        {
+            head->data = item;
+            cout << "Item Updated at position." << endl;
+            return;
+        }
+        Node *temp = head;
+        pos--;
+        while (pos--)
+        {
+            if (temp->next == head)
+            {
+                cout << "Out of bound." << endl;
+                return;
+            }
+            temp = temp->next;
+        }
+        temp->data = item;
+        cout << "Item Updated at position." << endl;
+    }
+
+    void reverse()
+    {
+    }
+
     void display()
     {
         if (head == NULL)
@@ -219,7 +298,11 @@ int main()
         cout << "4. Delete First " << endl;
         cout << "5. Delete Last " << endl;
         cout << "6. Delete From Position " << endl;
-        cout << "7. Display List " << endl;
+        cout << "7. Search Element " << endl;
+        cout << "8. Count Elements " << endl;
+        cout << "9. Update Element " << endl;
+        cout << "10. Reverse List " << endl;
+        cout << "11. Display List " << endl;
         cout << "Enter the choice : ";
         cin >> choice;
 
@@ -254,11 +337,29 @@ int main()
             obj.deletePos(pos);
             break;
         case 7:
+            cout << "Enter element : ";
+            cin >> value;
+            obj.search(value);
+            break;
+        case 8:
+            obj.count();
+            break;
+        case 9:
+            cout << "Enter Value : ";
+            cin >> value;
+            cout << "Enter Position : ";
+            cin >> pos;
+            obj.update(value, pos);
+            break;
+        case 10:
+            obj.reverse();
+            break;
+        case 11:
             obj.display();
             break;
         default:
             break;
         }
-    } while (choice != 10);
+    } while (choice != 20);
     return 0;
 }
